@@ -1,0 +1,37 @@
+<div class="form-page">
+  <div class="page-header">
+    <h1>{{ isEditMode ? 'Editar Tarea' : 'Crear Nueva Tarea' }}</h1>
+
+    <div style="display:flex; gap:12px;">
+      <a class="btn btn-outline" (click)="navigateBackToTasks()">
+        <mat-icon>arrow_back</mat-icon>
+        Volver
+      </a>
+    </div>
+  </div>
+
+  <mat-card class="form-card">
+    <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+      <div class="grid">
+        <mat-form-field appearance="outline" class="full">
+          <mat-label>Título de la Tarea</mat-label>
+          <input matInput formControlName="title" placeholder="Ej: Implementar el login">
+          <mat-error *ngIf="taskForm.get('title')?.invalid">
+            El título de la tarea es obligatorio.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-checkbox formControlName="completed" class="checkbox-group">
+          ¿Completada?
+        </mat-checkbox>
+      </div>
+
+      <div class="form-actions">
+        <a class="btn btn-outline" (click)="navigateBackToTasks()">Cancelar</a>
+        <button class="btn btn-primary" type="submit" [disabled]="taskForm.invalid">
+          {{ isEditMode ? 'Guardar Cambios' : 'Crear Tarea' }}
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>

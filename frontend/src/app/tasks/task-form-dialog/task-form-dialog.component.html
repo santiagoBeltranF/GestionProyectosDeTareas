@@ -1,0 +1,20 @@
+<h2 mat-dialog-title>{{ mode === 'create' ? 'Crear Nueva Tarea' : 'Editar Tarea' }}</h2>
+
+<div mat-dialog-content class="dialog-content">
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <mat-form-field appearance="outline" class="full">
+      <mat-label>Título de la Tarea</mat-label>
+      <input matInput formControlName="title" required placeholder="Ej: Implementar login">
+      <mat-error *ngIf="form.get('title')?.invalid">El título es obligatorio.</mat-error>
+    </mat-form-field>
+
+    <mat-checkbox formControlName="completed"> ¿Completada? </mat-checkbox>
+  </form>
+</div>
+
+<div mat-dialog-actions align="end" class="dialog-actions">
+  <button class="btn btn-outline" (click)="close()">Cancelar</button>
+  <button class="btn btn-primary" (click)="save()" [disabled]="form.invalid">
+    {{ mode === 'create' ? 'Crear Tarea' : 'Guardar Cambios' }}
+  </button>
+</div>

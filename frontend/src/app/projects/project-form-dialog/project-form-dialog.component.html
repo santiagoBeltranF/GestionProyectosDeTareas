@@ -1,0 +1,23 @@
+<h2 mat-dialog-title>{{ mode === 'create' ? 'Crear Proyecto' : 'Editar Proyecto' }}</h2>
+
+<div mat-dialog-content class="dialog-content">
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <mat-form-field appearance="outline" class="full">
+      <mat-label>Título del Proyecto</mat-label>
+      <input matInput formControlName="name" required placeholder="Ej: Nueva App Móvil">
+      <mat-error *ngIf="form.get('name')?.invalid">El título es obligatorio.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full">
+      <mat-label>Descripción (opcional)</mat-label>
+      <textarea matInput rows="4" formControlName="description" placeholder="Objetivos y alcance..."></textarea>
+    </mat-form-field>
+  </form>
+</div>
+
+<div mat-dialog-actions align="end" class="dialog-actions">
+  <button class="btn btn-outline" (click)="close()">Cancelar</button>
+  <button class="btn btn-primary" (click)="save()" [disabled]="form.invalid">
+    {{ mode === 'create' ? 'Crear Proyecto' : 'Guardar Cambios' }}
+  </button>
+</div>

@@ -1,0 +1,61 @@
+<div class="projects-page">
+
+  <div class="page-header">
+    <h1>Lista de Proyectos</h1>
+
+    <div style="display:flex; align-items:center; gap:14px;">
+      <div class="search">
+        <mat-icon>search</mat-icon>
+        <input #q type="text" placeholder="Buscar proyectos..." (input)="onSearchChange(q.value)" />
+      </div>
+
+      <button class="btn btn-primary" (click)="openProjectDialog('create')">
+        <mat-icon>add</mat-icon>
+        Crear Nuevo Proyecto
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="isLoading" class="loading">
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  </div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <div *ngIf="!isLoading && !error">
+    <div class="cards">
+      <mat-card class="project-card" *ngFor="let project of filteredProjects">
+        <div class="card-title">{{ project.name }}</div>
+        <div class="card-sub">Cliente: {{ getClientName(project) }}</div>
+
+        <div class="progress">
+          <div class="row">
+            <span>Progreso</span>
+            <span>{{ getProgress(project) }}%</span>
+          </div>
+          <div class="bar">
+            <div class="fill" [style.width.%]="getProgress(project)"></div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <!-- EDITA con modal -->
+          <button class="btn btn-outline" (click)="openProjectDialog('edit', project)">
+            Editar
+          </button>
+
+          <button class="btn btn-primary" (click)="viewTasks(project.id)">
+            Ver Tareas
+          </button>
+
+          <button class="btn btn-danger-outline" (click)="openDeleteModal(project)">
+            Eliminar
+          </button>
+        </div>
+      </mat-card>
+    </div>
+
+    <p *ngIf="filteredProjects.length === 0" class="empty">
+      No se encontraron proyectos. ¡Busca otro o crea uno!
+    </p>
+  </div>
+</div>

@@ -1,0 +1,67 @@
+<div class="task-list-page">
+
+  <div class="page-header">
+    <h1 *ngIf="project">Tareas · <strong>{{ project.name }}</strong></h1>
+
+    <div style="display:flex; gap:12px;">
+      <a class="btn btn-outline" routerLink="/projects">
+        <mat-icon>arrow_back</mat-icon>
+        Volver a Proyectos
+      </a>
+
+      <button class="btn btn-primary" (click)="openTaskDialog('create')">
+        <mat-icon>add</mat-icon>
+        Añadir Tarea
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="isLoading" class="loading">
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  </div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <div *ngIf="!isLoading && !error" class="tasks-card mat-elevation-z8">
+    <table mat-table [dataSource]="tasks" class="tasks-table">
+
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef> Task Name </th>
+        <td mat-cell *matCellDef="let task" class="title-cell" [class.is-completed]="task.completed">
+          {{ task.title }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> Status </th>
+        <td mat-cell *matCellDef="let task">
+          <span
+            class="status-badge"
+            [ngClass]="getStatusClass(task)"
+            (click)="toggleTaskStatus(task)"
+            title="Cambiar estado">
+            {{ getStatusLabel(task) }}
+          </span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef class="text-right"> Actions </th>
+        <td mat-cell *matCellDef="let task" class="actions">
+          <button mat-icon-button class="icon-btn icon-btn-outline" (click)="openTaskDialog('edit', task)" title="Editar">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button class="icon-btn icon-btn-danger" (click)="deleteTask(task)" title="Eliminar">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <p *ngIf="tasks.length === 0" class="empty">
+      Este proyecto no tiene tareas. ¡Crea la primera!
+    </p>
+  </div>
+</div>

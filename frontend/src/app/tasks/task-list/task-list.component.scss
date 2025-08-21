@@ -1,0 +1,89 @@
+.task-list-page{ display: grid; gap: 18px; }
+
+.tasks-card{
+  background: linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 100%);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 10px 10px 6px;
+}
+
+.tasks-table{
+  width: 100%;
+  border-spacing: 0;
+}
+
+.tasks-table .mat-mdc-header-row{
+  background: transparent;
+}
+.tasks-table .mat-mdc-header-cell{
+  color: var(--muted);
+  font-weight: 800;
+  letter-spacing: .3px;
+  text-transform: none;
+  font-size: 13.5px;
+  border-bottom: 1px solid var(--border);
+  padding: 14px 18px;
+}
+
+.tasks-table .mat-mdc-row{
+  border-bottom: 1px solid var(--border);
+}
+.tasks-table .mat-mdc-cell{
+  color: var(--text) !important;
+  padding: 14px 18px;
+}
+
+.title-cell{ color: var(--text) !important; font-weight: 600; }
+.title-cell.is-completed{ color: #dfe3ea !important; text-decoration: line-through; opacity: .95; }
+
+.status-badge{
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 6px 12px; font-weight: 800; font-size: 12.5px;
+  border-radius: 999px; border: 1px solid transparent;
+  user-select: none; cursor: pointer; transition: transform .05s ease, box-shadow .15s ease;
+}
+.status-badge:hover{ transform: translateY(-1px); }
+
+.status-progress{
+  color: #f2db72;
+  background: rgba(245, 208, 66, .12);
+  border-color: rgba(245, 208, 66, .35);
+}
+
+.status-completed{
+  color: #4cd7a9;
+  background: rgba(44, 180, 148, .14);
+  border-color: rgba(44, 180, 148, .45);
+}
+
+.actions{
+  display: flex; gap: 8px; justify-content: flex-end; align-items: center;
+}
+.text-right{ text-align: right; }
+
+.icon-btn.mat-mdc-icon-button{
+  width: 36px; height: 36px;
+  border-radius: 12px;
+  background: #1a1c20; color: var(--text);
+  border: 1px solid #353a41;
+  transition: transform .05s ease, box-shadow .15s ease, border-color .15s ease, background .15s ease;
+}
+.icon-btn.mat-mdc-icon-button:hover{ transform: translateY(-1px); }
+
+.icon-btn-outline{
+}
+
+.icon-btn-danger{
+  color: var(--primary);
+  border-color: rgba(239,59,59,.55);
+}
+.icon-btn-danger:hover{
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-ring);
+}
+
+.loading{ display: grid; place-items: center; padding: 30px 0; }
+.error{ color: #ff8a8a; }
+.empty{ text-align: center; color: var(--muted); padding: 14px 0; }
+
+.tasks-table .mat-mdc-row:hover{ background: #1b1d22; }

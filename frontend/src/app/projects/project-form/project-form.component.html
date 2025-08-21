@@ -1,0 +1,39 @@
+<div class="form-page">
+  <div class="page-header">
+    <h1>{{ isEditMode ? 'Editar Proyecto' : 'Crear Nuevo Proyecto' }}</h1>
+
+    <div style="display:flex; gap:12px;">
+      <a class="btn btn-outline" routerLink="/projects">
+        <mat-icon>arrow_back</mat-icon>
+        Volver
+      </a>
+    </div>
+  </div>
+
+  <mat-card class="form-card">
+    <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+      <div class="grid">
+        <mat-form-field appearance="outline" class="full">
+          <mat-label>Título del Proyecto</mat-label>
+          <input matInput formControlName="name" placeholder="Ej: Desarrollo de la App Móvil">
+          <mat-error *ngIf="projectForm.get('name')?.invalid">
+            El título del proyecto es obligatorio.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full">
+          <mat-label>Descripción (Opcional)</mat-label>
+          <textarea matInput rows="4" formControlName="description"
+            placeholder="Objetivos y alcance del proyecto..."></textarea>
+        </mat-form-field>
+      </div>
+
+      <div class="form-actions">
+        <a class="btn btn-outline" routerLink="/projects">Cancelar</a>
+        <button class="btn btn-primary" type="submit" [disabled]="projectForm.invalid">
+          {{ isEditMode ? 'Guardar Cambios' : 'Crear Proyecto' }}
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>
