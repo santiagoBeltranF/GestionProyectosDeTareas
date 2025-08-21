@@ -1,137 +1,131 @@
-# GestionProyectosDeTareas
+# 🚀 Gestor de Proyectos Full-Stack
 
-📌 Gestor de Proyectos Full-Stack (Node.js/Express + React)
+[![Node.js](https://img.shields.io/badge/Node.js-18.x-green?logo=node.js)](https://nodejs.org/) 
+[![Express](https://img.shields.io/badge/Express.js-Backend-lightgrey?logo=express)](https://expressjs.com/) 
+[![Angular](https://img.shields.io/badge/Angular-Frontend-DD0031?logo=angular&logoColor=white)](https://angular.dev/) 
+[![MongoDB](https://img.shields.io/badge/MongoDB-Database-brightgreen?logo=mongodb)](https://www.mongodb.com/) 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-Este es un proyecto Full-Stack que incluye:
+Aplicación **Full-Stack** para gestión de proyectos y tareas.  
+Incluye un **backend** con autenticación JWT y un **frontend** moderno con Angular.
 
-🔹 Backend: API RESTful construida con Node.js + Express + MongoDB
+---
 
-🔹 Frontend: Interfaz interactiva construida con React + Material UI
+## 📌 Tabla de Contenidos
+- [⚙️ Backend (Node.js/Express)](#️-backend-nodejsexpress)
+- [🅰️ Frontend (Angular)](#️-frontend-angular)
+- [🔗 Integración Frontend + Backend](#-integración-frontend--backend)
+- [🔑 Credenciales de Prueba](#-credenciales-de-prueba)
+- [📄 Licencia](#-licencia)
 
-🚀 Tecnologías
+---
 
-Backend: Node.js, Express, MongoDB, Mongoose, JWT, bcryptjs
+## ⚙️ Backend (Node.js/Express)
 
-Frontend: React, React Router, Axios, Material-UI, Hooks
+📍 **Características principales**
+- ✅ API RESTful para **usuarios, proyectos y tareas**
+- 🔐 Autenticación con **JWT**
+- 👤 Modelo `User` con **Mongoose + bcryptjs**
+- 🗄️ Conexión a **MongoDB (local o Atlas)**
+- ⚡ Middleware modular: CORS, validación, manejo de errores
+- 🌱 Script `seed` para generar usuario de prueba
 
-⚙️ Backend (Node.js/Express)
+📍 **Requisitos Previos**
+- Node.js **18.x o superior**  
+- npm o Yarn  
+- MongoDB  
 
-El backend es el núcleo de la aplicación: maneja la lógica de negocio, la base de datos y la autenticación de usuarios mediante API.
-
-✨ Características
-
-API RESTful: Endpoints para usuarios, proyectos y tareas
-
-Autenticación JWT: Rutas /api/auth/register y /api/auth/login
-
-Gestión de Usuarios: Modelo User con Mongoose y contraseñas hasheadas con bcryptjs
-
-Base de Datos: Conexión a MongoDB (local o en la nube con MongoDB Atlas)
-
-Middleware: Manejo de errores, CORS y validaciones
-
-Variables de Entorno: .env con configuración de DB y JWT
-
-Seeders: Script para poblar datos iniciales con un usuario de prueba
-
-✅ Requisitos Previos
-
-Node.js 18.x o superior
-
-npm (o Yarn)
-
-MongoDB
-
-🔧 Instalación
+📍 **Instalación**
+```bash
 cd backend
 npm install
 cp .env.example .env
+Configura el archivo .env:
 
-
-Configura tu .env:
-
+env
+Copiar
+Editar
 PORT=5000
 MONGO_URI=mongodb://localhost:27017/projectmanager
 JWT_SECRET=TU_CLAVE_SECRETA_AQUI
+📍 Inicializar con datos de prueba
 
-▶️ Inicialización
-
-Ejecutar el script seed para poblar la base de datos:
-
+bash
+Copiar
+Editar
 npm run seed
+📍 Ejecutar servidor
 
-▶️ Servidor de desarrollo
+bash
+Copiar
+Editar
 npm run dev
+📍 Disponible en: http://localhost:5000
 
+🅰️ Frontend (Angular)
+📍 Características principales
 
-Backend disponible en: http://localhost:5000
+🔑 Login de usuario con JWT
 
-⚛️ Frontend (React)
+📂 Gestión de proyectos y tareas (CRUD completo)
 
-El frontend consume la API del backend y permite gestionar proyectos y tareas de forma dinámica.
+🔒 Rutas protegidas con Angular Router
 
-✨ Características
+🎨 UI moderna con Tailwind CSS (o Angular Material si prefieres)
 
-Login de Usuario con JWT
+📡 Peticiones HTTP con HttpClient
 
-Gestión de Estado con Hooks (useState, useEffect, useContext)
+🎭 Lazy Loading para módulos y componentes
 
-Proyectos: Listar, crear, editar y eliminar
+⚡ RxJS para gestión de flujos y peticiones
 
-Tareas: Listar, crear, editar y marcar como completadas
-
-Rutas Protegidas con React Router
-
-Interfaz Moderna con Material UI
-
-Peticiones HTTP centralizadas con Axios
-
-Estilos Modulares con CSS/SCSS
-
-✅ Requisitos Previos
+📍 Requisitos Previos
 
 Node.js 18.x o superior
 
-npm (o Yarn)
+Angular CLI instalado globalmente:
 
-🔧 Instalación
+bash
+Copiar
+Editar
+npm install -g @angular/cli
+📍 Instalación
+
+bash
+Copiar
+Editar
 cd frontend
 npm install
+📍 Ejecutar servidor
 
-▶️ Servidor de desarrollo
-npm start
-
-
-Frontend disponible en: http://localhost:3000
+bash
+Copiar
+Editar
+ng serve
+📍 Disponible en: http://localhost:4200
 
 🔗 Integración Frontend + Backend
+Ejecutar ambos servicios en paralelo:
 
-Ejecutar ambos servicios al mismo tiempo:
-
-📌 En una terminal:
-
+bash
+Copiar
+Editar
+# Backend
 cd backend
 npm run dev
-
-
-📌 En otra terminal:
-
+bash
+Copiar
+Editar
+# Frontend
 cd frontend
-npm start
-
-
-Frontend: http://localhost:3000
-
-Backend: http://localhost:5000
+ng serve
+✅ Frontend → http://localhost:4200
+✅ Backend → http://localhost:5000
 
 🔑 Credenciales de Prueba
-
-Puedes iniciar sesión con el usuario generado por el script seed:
-
-Email: test@example.com
-
-Contraseña: contraseña
+Email	Contraseña
+test@example.com	contraseña
 
 📄 Licencia
-
-Este proyecto es de uso libre para fines educativos y de práctica.
+Este proyecto se distribuye bajo licencia MIT.
+¡Úsalo libremente para aprender, mejorar y crear! 🎉
